@@ -1,4 +1,4 @@
-package com.thiagoperea.jafta.ui.theme
+package com.thiagoperea.jafta.design_system.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

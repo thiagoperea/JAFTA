@@ -3,19 +3,41 @@ package com.thiagoperea.jafta
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.ui.Modifier
-import com.thiagoperea.jafta.design_system.CustomButton
-import com.thiagoperea.jafta.ui.theme.JAFTATheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.thiagoperea.jafta.navigation.loginNavigation
+import com.thiagoperea.jafta.design_system.theme.JAFTATheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
+            val navController = rememberNavController()
+
             JAFTATheme {
-                CustomButton()
+
+                NavHost(
+                    navController = navController,
+                    startDestination = JaftaNavigation.onboarding
+                ) {
+
+                    loginNavigation(navController)
+
+
+                }
+                /*
+
+                    - create NavHost
+                    - import navigation from each module
+
+                    - first screen -> SplashScreen
+
+                    - if user logged    -> pin / fingerprint
+                          - else        -> onboarding
+
+                */
             }
         }
     }

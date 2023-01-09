@@ -1,7 +1,8 @@
-package com.thiagoperea.jafta.ui.theme
+package com.thiagoperea.jafta.design_system.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Typography
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
@@ -37,7 +38,7 @@ fun JAFTATheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable 
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = Typography(),
         shapes = Shapes,
         content = content
     )

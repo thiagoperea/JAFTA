@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="signup">Criar conta</string>
+    <string name="login">Entrar</string>
+    <string name="gain_control_title">Tenha total controle sobre o seu dinheiro</string>
+    <string name="gain_control_description">Se torne seu próprio gestor e faça cada centavo valer</string>
+    <string name="know_where_your_money_title">Saiba para onde seu dinheiro vai</string>
+    <string name="know_where_your_money_description">Acompanhe suas transações facilmente, com categorias e relatórios financeiros</string>
+    <string name="planning_title">Faça planos</string>
+    <string name="planning_description">Crie orçamentos para cada categoria e tenha controle do seus gastos</string>
+</resources>
