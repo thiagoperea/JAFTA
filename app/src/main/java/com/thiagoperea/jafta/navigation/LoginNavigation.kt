@@ -22,6 +22,8 @@ fun NavGraphBuilder.loginNavigation(navController: NavController) {
     }
 
     composable(JaftaNavigation.login) {
-        LoginScreen()
+        LoginScreen(
+            goToHome = { navController.navigate(JaftaNavigation.home) }
+        )
     }
 }
