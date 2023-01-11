@@ -17,7 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.theme.JAFTATheme
 import com.thiagoperea.jafta.design_system.theme.TextStyles
-import com.thiagoperea.jafta.login.ui.login.LoginScreen
 
 @Composable
 fun SignupScreen(
@@ -74,6 +73,6 @@ fun SignupScreen(
 @Composable
 fun ItemPreview() {
     JAFTATheme {
-        LoginScreen()
+        SignupScreen()
     }
 }
