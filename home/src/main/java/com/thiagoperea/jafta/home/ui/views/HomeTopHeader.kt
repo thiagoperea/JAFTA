@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedButton
@@ -59,6 +60,9 @@ fun HomeTopHeader() {
             contentPadding = PaddingValues(start = 8.dp, end = 12.dp),
             shape = RoundedCornerShape(32.dp),
             border = BorderStroke(1.dp, Violet20),
+            colors = ButtonDefaults.outlinedButtonColors(
+                backgroundColor = Color.Transparent
+            )
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
