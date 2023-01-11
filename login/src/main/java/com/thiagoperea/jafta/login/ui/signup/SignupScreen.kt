@@ -1,6 +1,7 @@
 package com.thiagoperea.jafta.login.ui.signup
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -63,8 +64,40 @@ fun SignupScreen(
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
                 label = { Text(text = "Name", style = TextStyles.textField) },
-
+            )
+            OutlinedTextField(
+                value = textState.value,
+                onValueChange = { textState.value = it },
+                modifier = Modifier
+                    .padding(top = 24.dp, start = 16.dp, end = 16.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                label = { Text(text = "Email", style = TextStyles.textField) },
+            )
+            OutlinedTextField(
+                value = textState.value,
+                onValueChange = { textState.value = it },
+                modifier = Modifier
+                    .padding(top = 24.dp, start = 16.dp, end = 16.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                label = { Text(text = "Password", style = TextStyles.textField) },
+            )
+            Row(
+                Modifier
+                    .padding(start = 20.dp, top = 17.dp, end = 26.dp)
+            ) {
+                val checkedState = remember { mutableStateOf(false) }
+                Checkbox(
+                    checked = checkedState.value,
+                    onCheckedChange = { checkedState.value = it },
+                    colors = CheckboxDefaults.colors()
                 )
+                Text(
+                    text = "By signing up, you agree to the Terms of Service and Privacy Policy",
+                    style = TextStyles.body3
+                )
+            }
         }
     }
 }
