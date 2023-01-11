@@ -30,6 +30,24 @@ object TextStyles {
         //TODO: fontFamily =
     )
 
+    val bold14 = TextStyle(
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp,
+        //TODO: fontFamily =
+    )
+
+    val bold16 = TextStyle(
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        //TODO: fontFamily =
+    )
+
+    val semiBold18 = TextStyle(
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 18.sp,
+        //TODO: fontFamily =
+    )
+
     val semiBold22 = TextStyle(
         fontWeight = FontWeight.SemiBold,
         fontSize = 22.sp,

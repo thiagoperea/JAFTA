@@ -6,11 +6,17 @@ val HomeBackground = Color(0xFFFFF6E5)
 
 val Dark50 = Color(0xFF212325)
 val Dark75 = Color(0xFF161719)
+val Dark100 = Color(0xFF0D0E0F)
 
 val Light20 = Color(0xFF91919F)
 val Light80 = Color(0xFFFCFCFC)
 
 val Green100 = Color(0xFF00A86B)
+
+val Red100 = Color(0xFFFD3C4A)
+
+val Yellow100 = Color(0xFFFCAC12)
+val Yellow20 = Color(0xFFFCEED4)
 
 val Violet20 = Color(0xFFEEE5FF)
 val Violet100 = Color(0xFF7F3DFF)

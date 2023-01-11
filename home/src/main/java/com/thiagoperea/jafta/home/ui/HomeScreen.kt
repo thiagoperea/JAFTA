@@ -1,99 +1,88 @@
 package com.thiagoperea.jafta.home.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Chip
+import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.thiagoperea.jafta.design_system.theme.Dark75
-import com.thiagoperea.jafta.design_system.theme.Green100
-import com.thiagoperea.jafta.design_system.theme.HomeBackground
-import com.thiagoperea.jafta.design_system.theme.JAFTATheme
-import com.thiagoperea.jafta.design_system.theme.Light20
-import com.thiagoperea.jafta.design_system.theme.TextStyles
-import com.thiagoperea.jafta.home.R
-import com.thiagoperea.jafta.home.ui.views.HomeTopHeader
+import com.thiagoperea.jafta.design_system.theme.*
+import com.thiagoperea.jafta.home.ui.views.HomeTop
 
 @Composable
 fun HomeScreen() {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp))
-            .background(HomeBackground)
-    ) {
-        // TOP BAR
-        HomeTopHeader()
+    Column {
 
+        HomeTop()
+
+        // GRAPHICS COMPONENT
         Text(
-            text = "Saldo da Conta",
-            style = TextStyles.body3,
-            color = Light20
+            text = "Frequência de gastos",
+            style = TextStyles.title3,
+            color = Dark100,
+            modifier = Modifier.padding(16.dp)
         )
 
-        Text(
-            text = "R$ 9.400",
-            style = TextStyles.semiBold40,
-            color = Dark75,
+        val minHeightGraph = 200.dp
+
+        Box(
+            modifier = Modifier
+                .height(minHeightGraph)
+                .fillMaxWidth()
+                .background(Color.Magenta.copy(alpha = 0.3f))
         )
 
         Row(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 32.dp)
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp)
         ) {
-            HomeTopMoneyView(
-                modifier = Modifier.weight(1f)
-            )
+            OutlinedButton(
+                onClick = {},
+                shape = RoundedCornerShape(32.dp),
+                enabled = true,
+                colors = ButtonDefaults.outlinedButtonColors(
+                    backgroundColor = Yellow20,
+                    contentColor = Yellow100
+                ),
+                border = null
+            ) {
+                Text(
+                    text = "Today",
+                    style = TextStyles.bold14
+                )
+            }
 
-            Spacer(Modifier.width(16.dp))
+            //TODO: DO IT USING CHIP AND A CHIPGROUP
+            Chip(onClick = { /*TODO*/ }) {
 
-            HomeTopMoneyView(
-                modifier = Modifier.weight(1f)
-            )
-        }
-    }
-}
+            }
 
-@Composable
-fun HomeTopMoneyView(
-    modifier: Modifier = Modifier
-) {
-    Row(
-        modifier = modifier
-            .background(Green100, RoundedCornerShape(32.dp))
-            .padding(16.dp)
-    ) {
+            OutlinedButton(
+                onClick = {},
+                shape = RoundedCornerShape(32.dp),
+            ) {
+                Text("Week")
+            }
 
-        Icon(
-            painter = painterResource(R.drawable.ic_income),
-            contentDescription = null,
-            tint = Green100
-        )
+            OutlinedButton(
+                onClick = {}
+            ) {
+                Text("Month")
+            }
 
-        Column {
-
-            Text(
-                text = "Receitas",
-                style = TextStyles.body3,
-                color = HomeBackground
-            )
-
-            Text(
-                text = "R$ 5.000",
-                style = TextStyles.semiBold22,
-                color = HomeBackground
-            )
+            OutlinedButton(
+                onClick = {}
+            ) {
+                Text("Year")
+            }
         }
     }
 }
