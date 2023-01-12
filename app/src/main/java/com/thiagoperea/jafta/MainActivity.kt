@@ -36,7 +36,9 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             val showHomeControllers = remember { mutableStateOf(false) }
 
-            JAFTATheme {
+            JAFTATheme(
+                darkTheme = false
+            ) {
 
                 Scaffold(
                     bottomBar = {
