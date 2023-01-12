@@ -2,6 +2,6 @@ package com.thiagoperea.jafta.login.dependencyInjection
 
 import org.koin.dsl.module
 
-val viewModelModule = module {
+val loginModule = module {
 
 }
