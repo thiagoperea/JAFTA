@@ -6,10 +6,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.theme.JAFTATheme
@@ -21,7 +18,7 @@ fun HomeSpendGraph() {
 
     val graphHeight = 200.dp
 
-    val fakeData = List(20) {
+    val fakeData = List(15) {
         Random(it).nextInt(0, 300)
     }
 
@@ -32,57 +29,57 @@ fun HomeSpendGraph() {
             .height(graphHeight)
             .fillMaxWidth(),
         onDraw = {
-//            drawGrid(
-//                columnCount = 20,
-//                rowCount = 10
-//            )
+            val boxSize = size
+            val pointWidth = boxSize.width / fakeData.size
+            val strokeWidth = 2 * density
+            val markerWidth = 4 * density
 
-            val width = size.width
-            val height = size.height
+            val safeMaxY = boxSize.height - markerWidth
+            val safeMinY = markerWidth
 
-            val lineExample = Path().apply {
-                moveTo(x = 16 * density, y = height - (16 * density))
-                lineTo(x = 32 * density, y = height - (32 * density))
-                close()
+            var lastX = 0f
+            var lastY = boxSize.height
+
+            fakeData.forEach { data ->
+
+                val startX = lastX
+                val endX = startX + pointWidth
+
+                val yPercent = data / maxValue.toFloat()
+                var startY = lastY
+                var endY = boxSize.height - (boxSize.height * yPercent)
+
+                if (startY > safeMaxY) {
+                    startY = safeMaxY
+                } else if (startY < safeMinY) {
+                    startY = safeMinY
+                }
+
+                if (endY > safeMaxY) {
+                    endY = safeMaxY
+                } else if (endY < safeMinY) {
+                    endY = safeMinY
+                }
+
+                drawLine(
+                    color = Violet100,
+                    start = Offset(startX, startY),
+                    end = Offset(endX, endY),
+                    cap = StrokeCap.Round,
+                    strokeWidth = strokeWidth
+                )
+
+                drawCircle(
+                    color = Violet100,
+                    radius = markerWidth,
+                    center = Offset(endX, endY)
+                )
+
+                lastX = endX
+                lastY = endY
             }
-
-            drawPath(
-                path = lineExample,
-                color = Violet100,
-                style = Stroke(width = 2f)
-            )
         }
     )
-}
-
-fun DrawScope.drawGrid(columnCount: Int, rowCount: Int) {
-    val width = size.width
-    val height = size.height
-
-    val columnSize = width / columnCount
-    val rowSize = height / rowCount
-
-    var columnDrawPosition = 0f
-    repeat(columnCount) {
-        drawLine(
-            color = Color.Black,
-            start = Offset(x = columnDrawPosition, y = 0f),
-            end = Offset(x = columnDrawPosition, y = height)
-        )
-
-        columnDrawPosition += columnSize
-    }
-
-    var rowDrawPosition = 0f
-    repeat(rowCount) {
-        drawLine(
-            color = Color.Black,
-            start = Offset(x = 0f, y = rowDrawPosition),
-            end = Offset(x = width, y = rowDrawPosition)
-        )
-
-        rowDrawPosition += rowSize
-    }
 }
 
 @Preview(showBackground = true)
