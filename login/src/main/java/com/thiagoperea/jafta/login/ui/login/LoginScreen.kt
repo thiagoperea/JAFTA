@@ -17,6 +17,6 @@ fun LoginScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
     ) {
-        Text("LOGIN SCREEN")
+        Text("SIGNUP SCREEN")
     }
 }
