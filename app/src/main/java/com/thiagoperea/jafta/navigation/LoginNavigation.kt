@@ -18,7 +18,7 @@ fun NavGraphBuilder.loginNavigation(navController: NavController) {
     }
 
     composable(JaftaNavigation.signUp) {
-        SignupScreen()
+        SignupScreen(onNavigationUp = { navController.navigateUp() })
     }
 
     composable(JaftaNavigation.login) {

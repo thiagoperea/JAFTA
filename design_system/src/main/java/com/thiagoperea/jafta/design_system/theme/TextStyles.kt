@@ -31,9 +31,24 @@ object TextStyles {
         //TODO: fontFamily =
     )
 
-    val textField = TextStyle(
+    val title2 = TextStyle(
         fontWeight = FontWeight.W400,
         fontSize = 16.sp,
+        lineHeight = 18.sp,
+        color = Light20
+        //TODO: fontFamily =
+    )
+
+    val title4 = TextStyle(
+        fontWeight = FontWeight.W500,
+        fontSize = 16.sp,
+        lineHeight = 19.36.sp,
+        //TODO: fontFamily =
+    )
+
+    val title5 = TextStyle(
+        fontWeight = FontWeight.W700,
+        fontSize = 14.sp,
         lineHeight = 18.sp,
         color = Light20
         //TODO: fontFamily =

@@ -8,4 +8,10 @@
     <string name="know_where_your_money_description">Acompanhe suas transações facilmente, com categorias e relatórios financeiros</string>
     <string name="planning_title">Faça planos</string>
     <string name="planning_description">Crie orçamentos para cada categoria e tenha controle do seus gastos</string>
+    <string name="name">Nome</string>
+    <string name="email">Email</string>
+    <string name="password">Senha</string>
+    <string name="terms_of_service_and_privacy_policy">Ao se inscrever, você concorda com os Termos de Serviço e a Política de Privacidade</string>
+    <string name="or_with">Ou com</string>
+    <string name="already_have_an_account">Já tem uma conta?</string>
 </resources>
