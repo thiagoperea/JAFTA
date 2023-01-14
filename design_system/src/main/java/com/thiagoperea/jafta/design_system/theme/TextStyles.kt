@@ -1,6 +1,7 @@
 package com.thiagoperea.jafta.design_system.theme
 
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
@@ -28,6 +29,7 @@ object TextStyles {
     val title3 = TextStyle(
         fontWeight = FontWeight.W600,
         fontSize = 18.sp,
+        lineHeight = 21.78.sp
         //TODO: fontFamily =
     )
 
@@ -43,6 +45,7 @@ object TextStyles {
         fontWeight = FontWeight.W500,
         fontSize = 16.sp,
         lineHeight = 19.36.sp,
+        color = Light20
         //TODO: fontFamily =
     )
 
@@ -53,4 +56,15 @@ object TextStyles {
         color = Light20
         //TODO: fontFamily =
     )
+
+    @Composable
+    fun spannableString(text: String, textSpan: String): AnnotatedString {
+        val annotatedString = buildAnnotatedString {
+            append(text)
+            withStyle(style = SpanStyle(Violet100)) {
+                append(textSpan)
+            }
+        }
+        return annotatedString
+    }
 }
