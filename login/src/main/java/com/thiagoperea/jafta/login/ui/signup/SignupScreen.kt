@@ -3,14 +3,21 @@ package com.thiagoperea.jafta.login.ui.signup
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Lock
+import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.outlined.VisibilityOff
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.ArrowTopAppBar
@@ -45,7 +52,8 @@ fun SignupScreen(
 
             val nameState = remember { mutableStateOf("") }
             val emailState = remember { mutableStateOf("") }
-            val passawordState = remember { mutableStateOf("") }
+            val passwordState = remember { mutableStateOf("") }
+            var showPassword by remember { mutableStateOf(false) }
 
             OutlinedTextField(
                 value = nameState.value,
@@ -60,6 +68,7 @@ fun SignupScreen(
                         style = TextStyles.title2
                     )
                 },
+                placeholder = { Text(text = stringResource(id = R.string.enter_your_name)) }
             )
 
             OutlinedTextField(
@@ -75,11 +84,12 @@ fun SignupScreen(
                         style = TextStyles.title2
                     )
                 },
+                placeholder = { Text(text = stringResource(id = R.string.enter_your_email)) }
             )
 
             OutlinedTextField(
-                value = passawordState.value,
-                onValueChange = { passawordState.value = it },
+                value = passwordState.value,
+                onValueChange = { passwordState.value = it },
                 modifier = Modifier
                     .padding(top = 24.dp, start = 16.dp, end = 16.dp)
                     .fillMaxWidth(),
@@ -90,6 +100,22 @@ fun SignupScreen(
                         style = TextStyles.title2
                     )
                 },
+                placeholder = { Text(text = stringResource(id = R.string.enter_your_password)) },
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Outlined.Lock,
+                        contentDescription = "Lock Icon"
+                    )
+                },
+                trailingIcon = {
+                    IconButton(onClick = { showPassword = !showPassword }) {
+                        Icon(
+                            imageVector = if (showPassword) Icons.Outlined.VisibilityOff else Icons.Outlined.Visibility,
+                            contentDescription = if (showPassword) "Show Password" else "Hide Password"
+                        )
+                    }
+                },
+                visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation()
             )
 
             Row(
@@ -108,8 +134,14 @@ fun SignupScreen(
                         checkedColor = Violet100
                     )
                 )
+                val annotatedString = buildAnnotatedString {
+                    append(stringResource(id = R.string.terms_of_service_and_privacy_policy))
+                    withStyle(style = SpanStyle(Violet100)) {
+                        append(stringResource(id = R.string.terms_of_service_and_privacy_policy_span_text))
+                    }
+                }
                 Text(
-                    text = stringResource(id = R.string.terms_of_service_and_privacy_policy),
+                    text = annotatedString,
                     style = TextStyles.body3
                 )
             }
@@ -119,7 +151,7 @@ fun SignupScreen(
                 type = CustomButtonType.PRIMARY,
                 modifier = Modifier
                     .padding(start = 16.dp, end = 16.dp, top = 24.dp),
-                onClick = { viewModel.signup(emailState.value, passawordState.value) }
+                onClick = { viewModel.signup(emailState.value, passwordState.value) }
             )
 
             Text(
@@ -146,7 +178,7 @@ fun SignupScreen(
                     )
                 },
                 shape = RoundedCornerShape(16.dp),
-                elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp, 0.dp)
+                elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp, 0.dp),
             )
 
             Row(
