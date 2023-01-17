@@ -54,6 +54,7 @@ fun SignupScreen(
             val emailState = remember { mutableStateOf("") }
             val passwordState = remember { mutableStateOf("") }
             var showPassword by remember { mutableStateOf(false) }
+            val checkedState = remember { mutableStateOf(false) }
 
             OutlinedTextField(
                 value = nameState.value,
@@ -68,7 +69,11 @@ fun SignupScreen(
                         style = TextStyles.title2
                     )
                 },
-                placeholder = { Text(text = stringResource(id = R.string.enter_your_name)) }
+                placeholder = {
+                    Text(
+                        text = stringResource(id = R.string.enter_your_name)
+                    )
+                }
             )
 
             OutlinedTextField(
@@ -84,7 +89,11 @@ fun SignupScreen(
                         style = TextStyles.title2
                     )
                 },
-                placeholder = { Text(text = stringResource(id = R.string.enter_your_email)) }
+                placeholder = {
+                    Text(
+                        text = stringResource(id = R.string.enter_your_email)
+                    )
+                }
             )
 
             OutlinedTextField(
@@ -100,18 +109,22 @@ fun SignupScreen(
                         style = TextStyles.title2
                     )
                 },
-                placeholder = { Text(text = stringResource(id = R.string.enter_your_password)) },
+                placeholder = {
+                    Text(
+                        text = stringResource(id = R.string.enter_your_password)
+                    )
+                },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Outlined.Lock,
-                        contentDescription = "Lock Icon"
+                        contentDescription = null
                     )
                 },
                 trailingIcon = {
                     IconButton(onClick = { showPassword = !showPassword }) {
                         Icon(
                             imageVector = if (showPassword) Icons.Outlined.VisibilityOff else Icons.Outlined.Visibility,
-                            contentDescription = if (showPassword) "Show Password" else "Hide Password"
+                            contentDescription = null
                         )
                     }
                 },
@@ -123,8 +136,6 @@ fun SignupScreen(
                 modifier = Modifier
                     .padding(start = 20.dp, top = 17.dp, end = 26.dp)
             ) {
-
-                val checkedState = remember { mutableStateOf(false) }
 
                 Checkbox(
                     checked = checkedState.value,
@@ -172,7 +183,7 @@ fun SignupScreen(
                 content = {
                     Text(
                         modifier = Modifier.padding(vertical = 4.dp),
-                        text = "Sign Up with Google",
+                        text = stringResource(R.string.sign_up_with_google),
                         style = TextStyles.title3,
                         color = Color.Black
                     )
