@@ -12,9 +12,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -133,7 +132,7 @@ fun SignupScreen(
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .padding(start = 20.dp, top = 17.dp, end = 26.dp)
+                    .padding(start = 8.dp, top = 16.dp, end = 8.dp)
             ) {
 
                 Checkbox(
@@ -163,7 +162,7 @@ fun SignupScreen(
             )
 
             Text(
-                text = stringResource(id = R.string.or_with),
+                text = stringResource(id = R.string.or),
                 style = TextStyles.title5,
                 modifier = Modifier
                     .padding(top = 16.dp)
@@ -182,7 +181,7 @@ fun SignupScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Image(
-                            imageVector = ImageVector.vectorResource(id = R.drawable.ic_google),
+                            painter = painterResource(id = R.drawable.ic_google),
                             contentDescription = null,
                             modifier = Modifier
                                 .padding(end = 10.dp)

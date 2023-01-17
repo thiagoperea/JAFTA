@@ -9,7 +9,8 @@
     <string name="planning_title">Faça planos</string>
     <string name="planning_description">Crie orçamentos para cada categoria e tenha controle do seus gastos</string>
 
-    // Signup screen
+    <!-- Signup Screen-->
+
     <string name="name">Nome</string>
     <string name="enter_your_name">Insira seu nome</string>
     <string name="email">Email</string>
@@ -18,11 +19,12 @@
     <string name="enter_your_password">Insira sua senha</string>
     <string name="terms_of_service_and_privacy_policy">Ao se inscrever, você concorda com os </string>
     <string name="terms_of_service_and_privacy_policy_span_text">Termos de Serviço e a Política de Privacidade</string>
-    <string name="or_with">Ou com</string>
-    <string name="already_have_an_account">Já tem uma conta?</string>
+    <string name="or">Ou</string>
+    <string name="already_have_an_account">Já tem uma conta? </string>
     <string name="sign_up_with_google">Criar conta com Google</string>
 
-    // Login screen
+    <!-- Login screen -->
+
     <string name="dont_have_an_account_yet">Ainda não tem uma conta?</string>
     <string name="forgot_password">Esqueceu a senha?</string>
 

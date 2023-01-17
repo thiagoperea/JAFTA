@@ -58,10 +58,14 @@ object TextStyles {
     )
 
     @Composable
-    fun spannableString(text: String, textSpan: String): AnnotatedString {
+    fun spannableString(
+        text: String,
+        textSpan: String,
+        textSpanStyle: SpanStyle = SpanStyle(Violet100)
+    ): AnnotatedString {
         val annotatedString = buildAnnotatedString {
             append(text)
-            withStyle(style = SpanStyle(Violet100)) {
+            withStyle(style = textSpanStyle) {
                 append(textSpan)
             }
         }
