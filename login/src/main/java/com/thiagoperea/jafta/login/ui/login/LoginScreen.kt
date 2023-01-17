@@ -74,18 +74,22 @@ fun LoginScreen(
                         style = TextStyles.title2
                     )
                 },
-                placeholder = { Text(text = stringResource(id = R.string.enter_your_password)) },
+                placeholder = {
+                    Text(
+                        text = stringResource(id = R.string.enter_your_password)
+                    )
+                },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Outlined.Lock,
-                        contentDescription = "Lock Icon"
+                        contentDescription = null
                     )
                 },
                 trailingIcon = {
                     IconButton(onClick = { showPassword = !showPassword }) {
                         Icon(
                             imageVector = if (showPassword) Icons.Outlined.VisibilityOff else Icons.Outlined.Visibility,
-                            contentDescription = if (showPassword) "Show Password" else "Hide Password"
+                            contentDescription = null
                         )
                     }
                 },
