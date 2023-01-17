@@ -53,9 +53,9 @@ android {
 dependencies {
 
     implementation project(":design_system")
-    implementation project(":login")
-    implementation project(":home")
-    implementation project(":transaction")
+    implementation project(":feature:login")
+    implementation project(":feature:home")
+    implementation project(":feature:transaction")
 
     implementation platform('androidx.compose:compose-bom:2022.12.00')
     androidTestImplementation platform('androidx.compose:compose-bom:2022.12.00')

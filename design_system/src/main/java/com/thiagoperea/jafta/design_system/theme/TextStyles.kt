@@ -105,6 +105,12 @@ object TextStyles {
         //TODO: fontFamily =
     )
 
+    val semiBold48 = TextStyle(
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 48.sp,
+        //TODO: fontFamily =
+    )
+
     @Composable
     fun spannableString(
         text: String,

@@ -1,4 +1,4 @@
-package com.thiagoperea.jafta.transaction.ui
+package com.thiagoperea.jafta.design_system
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -11,20 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.theme.Light80
 import com.thiagoperea.jafta.design_system.theme.Violet100
-import org.koin.androidx.compose.koinViewModel
-
-@Composable
-fun TransactionScreen(
-    viewModel: TransactionViewModel = koinViewModel(),
-    onNavigateUp: () -> Unit
-) {
-
-    val screenState = viewModel.screenState.value
-
-    when (screenState) {
-        TransactionState.Loading -> LoadingScreen()
-    }
-}
 
 @Composable
 fun LoadingScreen() {
