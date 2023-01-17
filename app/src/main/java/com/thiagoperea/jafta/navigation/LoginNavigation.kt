@@ -22,6 +22,6 @@ fun NavGraphBuilder.loginNavigation(navController: NavController) {
     }
 
     composable(JaftaNavigation.login) {
-        LoginScreen()
+        LoginScreen(onNavigationUp = { navController.navigateUp() })
     }
 }

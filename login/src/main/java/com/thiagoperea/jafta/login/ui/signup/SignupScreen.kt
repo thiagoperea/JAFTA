@@ -1,5 +1,6 @@
 package com.thiagoperea.jafta.login.ui.signup
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -11,20 +12,18 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.ArrowTopAppBar
 import com.thiagoperea.jafta.design_system.CustomButton
 import com.thiagoperea.jafta.design_system.CustomButtonType
 import com.thiagoperea.jafta.design_system.theme.JAFTATheme
-import com.thiagoperea.jafta.design_system.theme.Light20
 import com.thiagoperea.jafta.design_system.theme.TextStyles
 import com.thiagoperea.jafta.design_system.theme.Violet100
 import com.thiagoperea.jafta.login.R
@@ -145,14 +144,12 @@ fun SignupScreen(
                         checkedColor = Violet100
                     )
                 )
-                val annotatedString = buildAnnotatedString {
-                    append(stringResource(id = R.string.terms_of_service_and_privacy_policy))
-                    withStyle(style = SpanStyle(Violet100)) {
-                        append(stringResource(id = R.string.terms_of_service_and_privacy_policy_span_text))
-                    }
-                }
+
                 Text(
-                    text = annotatedString,
+                    text = TextStyles.spannableString(
+                        stringResource(id = R.string.terms_of_service_and_privacy_policy),
+                        stringResource(id = R.string.terms_of_service_and_privacy_policy_span_text)
+                    ),
                     style = TextStyles.body3
                 )
             }
@@ -181,12 +178,22 @@ fun SignupScreen(
                     .padding(start = 16.dp, end = 16.dp, top = 16.dp),
                 onClick = { TODO() },
                 content = {
-                    Text(
-                        modifier = Modifier.padding(vertical = 4.dp),
-                        text = stringResource(R.string.sign_up_with_google),
-                        style = TextStyles.title3,
-                        color = Color.Black
-                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Image(
+                            imageVector = ImageVector.vectorResource(id = R.drawable.ic_google),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .padding(end = 10.dp)
+                        )
+                        Text(
+                            modifier = Modifier.padding(vertical = 4.dp),
+                            text = stringResource(id = R.string.sign_up_with_google),
+                            style = TextStyles.title3,
+                            color = Color.Black
+                        )
+                    }
                 },
                 shape = RoundedCornerShape(16.dp),
                 elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp, 0.dp),
@@ -199,25 +206,19 @@ fun SignupScreen(
             ) {
 
                 Text(
-                    text = stringResource(id = R.string.already_have_an_account),
+                    text = TextStyles.spannableString(
+                        text = stringResource(id = R.string.already_have_an_account),
+                        textSpan = stringResource(id = R.string.login)
+                    ),
                     style = TextStyles.title4,
                     modifier = Modifier
-                        .padding(top = 16.dp),
-                    color = Light20
-                )
-
-                Text(
-                    text = stringResource(id = R.string.login),
-                    style = TextStyles.title4,
-                    color = Violet100,
-                    modifier = Modifier
-                        .padding(top = 16.dp, start = 4.dp)
-
+                        .padding(top = 16.dp)
                 )
             }
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
