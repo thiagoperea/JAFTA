@@ -7,13 +7,10 @@ import com.thiagoperea.jafta.JaftaNavigation
 import com.thiagoperea.jafta.home.ui.HomeScreen
 
 fun NavGraphBuilder.homeNavigation(
-    navController: NavController,
-    onHomeItemSelected: () -> Unit
+    navController: NavController
 ) {
 
     composable(JaftaNavigation.home) {
-        onHomeItemSelected()
-
         HomeScreen()
     }
 

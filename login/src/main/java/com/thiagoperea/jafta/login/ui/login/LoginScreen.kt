@@ -26,6 +26,7 @@ import com.thiagoperea.jafta.login.R
 @Composable
 fun LoginScreen(
     onNavigationUp: () -> Unit,
+    goToHome: () -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -101,7 +102,7 @@ fun LoginScreen(
                 type = CustomButtonType.PRIMARY,
                 modifier = Modifier
                     .padding(start = 16.dp, end = 16.dp, top = 48.dp),
-                onClick = { TODO() }
+                onClick = { goToHome() }
             )
 
             Text(
@@ -136,6 +137,6 @@ fun LoginScreen(
 @Composable
 fun ItemPreview() {
     JAFTATheme {
-        LoginScreen(onNavigationUp = { })
+        LoginScreen(onNavigationUp = { }, goToHome = {})
     }
 }

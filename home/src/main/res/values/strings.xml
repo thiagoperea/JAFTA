@@ -6,4 +6,8 @@
     <string name="week">Semana</string>
     <string name="month">Mês</string>
     <string name="year">Ano</string>
+    <string name="account_balance">Saldo da Conta</string>
+    <string name="spend_frequency">Frequência de Gastos</string>
+    <string name="recent_transactions">Transações Recentes</string>
+    <string name="see_all">Ver todos</string>
 </resources>

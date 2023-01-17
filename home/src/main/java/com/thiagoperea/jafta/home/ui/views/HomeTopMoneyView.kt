@@ -11,18 +11,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.theme.Green100
 import com.thiagoperea.jafta.design_system.theme.HomeBackground
+import com.thiagoperea.jafta.design_system.theme.JAFTATheme
 import com.thiagoperea.jafta.design_system.theme.Red100
 import com.thiagoperea.jafta.design_system.theme.TextStyles
 import com.thiagoperea.jafta.home.R
-
-
-enum class HomeTopMoneyViewType(val iconRes: Int, val titleRes: Int, val color: Color) {
-    INCOME(R.drawable.ic_income, R.string.income, Green100),
-    EXPENSE(R.drawable.ic_expense, R.string.expense, Red100)
-}
+import com.thiagoperea.jafta.home.ui.type.HomeTopMoneyViewType
 
 @Composable
 fun HomeTopMoneyView(
@@ -41,9 +38,9 @@ fun HomeTopMoneyView(
             contentDescription = null,
             tint = type.color,
             modifier = Modifier
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(8.dp))
                 .background(HomeBackground)
-                .padding(16.dp)
+                .padding(8.dp)
         )
 
         Column(
@@ -60,10 +57,18 @@ fun HomeTopMoneyView(
             )
 
             Text(
-                text = "R$ 555.000",
+                text = "R$ 55.000",
                 style = TextStyles.bold16,
                 color = HomeBackground
             )
         }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewHomeTopMoneyView() {
+    JAFTATheme {
+        HomeTopMoneyView(type = HomeTopMoneyViewType.INCOME)
     }
 }

@@ -69,6 +69,12 @@ object TextStyles {
         //TODO: fontFamily =
     )
 
+    val medium10 = TextStyle(
+        fontWeight = FontWeight.Medium,
+        fontSize = 10.sp,
+        //TODO: fontFamily =
+    )
+
     val semiBold13 = TextStyle(
         fontWeight = FontWeight.SemiBold,
         fontSize = 13.sp,

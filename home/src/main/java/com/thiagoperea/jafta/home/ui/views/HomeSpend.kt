@@ -36,7 +36,7 @@ fun HomeSpend() {
     Column {
 
         Text(
-            text = "Frequência de Gastos",
+            text = stringResource(R.string.spend_frequency),
             style = TextStyles.title3,
             color = Dark100,
             modifier = Modifier.padding(16.dp)

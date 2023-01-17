@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">JAFTA</string>
+    <string name="home">Home</string>
+    <string name="transaction">Transações</string>
+    <string name="budget">Orçamento</string>
+    <string name="profile">Perfil</string>
 </resources>

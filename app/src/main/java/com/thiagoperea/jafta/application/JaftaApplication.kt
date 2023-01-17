@@ -1,10 +1,12 @@
-package com.thiagoperea.jafta.dependecyInjection
+package com.thiagoperea.jafta.application
 
 import android.app.Application
 import com.thiagoperea.jafta.login.di.loginModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
+
+const val APP_TAG = "TAG.JAFTA"
 
 class JaftaApplication : Application() {
 

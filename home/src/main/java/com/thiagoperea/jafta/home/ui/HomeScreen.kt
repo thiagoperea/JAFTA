@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.theme.Dark100
@@ -40,6 +41,8 @@ import com.thiagoperea.jafta.design_system.theme.Violet20
 import com.thiagoperea.jafta.design_system.theme.Yellow100
 import com.thiagoperea.jafta.design_system.theme.Yellow20
 import com.thiagoperea.jafta.home.R
+import com.thiagoperea.jafta.home.ui.model.TransactionData
+import com.thiagoperea.jafta.home.ui.type.TransactionType
 import com.thiagoperea.jafta.home.ui.views.HomeSpend
 import com.thiagoperea.jafta.home.ui.views.HomeTop
 
@@ -60,31 +63,6 @@ fun HomeScreen() {
         HomeTransactions()
     }
 }
-
-/*****/
-/*****/
-/*****/
-
-data class TransactionData(
-    val type: TransactionType,
-    val description: String,
-    val value: Double,
-    val date: String
-)
-
-enum class TransactionType(
-    val iconRes: Int,
-    val iconColor: Color,
-    val iconBgColor: Color
-) {
-    SHOPPING(R.drawable.ic_shopping_bag, Yellow100, Yellow20),
-    SUBSCRIPTION(R.drawable.ic_subscription, Violet100, Violet20),
-    FOOD(R.drawable.ic_restaurant, Red100, Red20)
-}
-
-/*****/
-/*****/
-/*****/
 
 fun LazyListScope.HomeTransactions() {
 
@@ -116,7 +94,7 @@ fun LazyListScope.HomeTransactions() {
         ) {
 
             Text(
-                text = "Transações Recentes",
+                text = stringResource(R.string.recent_transactions),
                 style = TextStyles.title3,
                 color = Dark100,
                 modifier = Modifier.weight(1f)
@@ -133,7 +111,7 @@ fun LazyListScope.HomeTransactions() {
                 ),
                 content = {
                     Text(
-                        text = "Ver todos",
+                        text = stringResource(R.string.see_all),
                         style = TextStyles.body3
                     )
                 },

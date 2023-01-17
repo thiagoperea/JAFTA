@@ -8,11 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.theme.Dark75
 import com.thiagoperea.jafta.design_system.theme.HomeBackground
 import com.thiagoperea.jafta.design_system.theme.Light20
 import com.thiagoperea.jafta.design_system.theme.TextStyles
+import com.thiagoperea.jafta.home.R
+import com.thiagoperea.jafta.home.ui.type.HomeTopMoneyViewType
 
 @Composable
 fun HomeTop() {
@@ -23,11 +26,10 @@ fun HomeTop() {
             .background(HomeBackground)
     ) {
 
-        // TOP BAR
         HomeTopHeader()
 
         Text(
-            text = "Saldo da Conta",
+            text = stringResource(R.string.account_balance),
             style = TextStyles.body3,
             color = Light20
         )
