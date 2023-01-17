@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.FabPosition
@@ -33,6 +32,7 @@ import com.thiagoperea.jafta.design_system.theme.Violet100
 import com.thiagoperea.jafta.extension.containsAny
 import com.thiagoperea.jafta.navigation.homeNavigation
 import com.thiagoperea.jafta.navigation.loginNavigation
+import com.thiagoperea.jafta.navigation.transactionNavigation
 
 class MainActivity : ComponentActivity() {
 
@@ -57,9 +57,9 @@ class MainActivity : ComponentActivity() {
                 navController.addOnDestinationChangedListener { _, destination, _ ->
                     showHomeControllers.value = destination.route.containsAny(
                         JaftaNavigation.home,
-                        JaftaNavigation.transaction,
-                        JaftaNavigation.budget,
-                        JaftaNavigation.profile
+                        JaftaNavigation.homeTransaction,
+                        JaftaNavigation.homeBudget,
+                        JaftaNavigation.homeProfile
                     )
                 }
             }
@@ -104,11 +104,13 @@ class MainActivity : ComponentActivity() {
 
                         if (showHomeControllers.value) {
                             FloatingActionButton(
-                                onClick = {},
+                                onClick = {
+                                    navController.navigate(JaftaNavigation.transaction)
+                                },
                                 backgroundColor = Violet100,
                                 contentColor = Light80,
 
-                            ) {
+                                ) {
                                 Icon(
                                     imageVector = Icons.Default.Add,
                                     contentDescription = null,
@@ -133,13 +135,11 @@ class MainActivity : ComponentActivity() {
                                   - else        -> onboarding
                         */
 
-                        loginNavigation(
-                            navController = navController
-                        )
+                        loginNavigation(navController)
 
-                        homeNavigation(
-                            navController = navController
-                        )
+                        homeNavigation(navController)
+
+                        transactionNavigation(navController)
                     }
                 }
             }

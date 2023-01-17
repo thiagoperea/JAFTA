@@ -72,9 +72,9 @@ fun RowScope.BottomItemTransaction(
                 style = TextStyles.medium10
             )
         },
-        selected = currentDestination?.hierarchy?.any { it.route == JaftaNavigation.transaction } == true,
+        selected = currentDestination?.hierarchy?.any { it.route == JaftaNavigation.homeTransaction } == true,
         onClick = {
-//            navController.navigate(JaftaNavigation.transaction) {
+//            navController.navigate(JaftaNavigation.homeTransaction) {
 //                popUpTo(navController.graph.findStartDestination().id) {
 //                    saveState = true
 //                }
@@ -105,9 +105,9 @@ fun RowScope.BottomItemBudget(
                 style = TextStyles.medium10
             )
         },
-        selected = currentDestination?.hierarchy?.any { it.route == JaftaNavigation.budget } == true,
+        selected = currentDestination?.hierarchy?.any { it.route == JaftaNavigation.homeBudget } == true,
         onClick = {
-//            navController.navigate(JaftaNavigation.budget) {
+//            navController.navigate(JaftaNavigation.homeBudget) {
 //                popUpTo(navController.graph.findStartDestination().id) {
 //                    saveState = true
 //                }
@@ -138,9 +138,9 @@ fun RowScope.BottomItemProfile(
                 style = TextStyles.medium10
             )
         },
-        selected = currentDestination?.hierarchy?.any { it.route == JaftaNavigation.profile } == true,
+        selected = currentDestination?.hierarchy?.any { it.route == JaftaNavigation.homeProfile } == true,
         onClick = {
-//            navController.navigate(JaftaNavigation.profile) {
+//            navController.navigate(JaftaNavigation.homeProfile) {
 //                popUpTo(navController.graph.findStartDestination().id) {
 //                    saveState = true
 //                }
