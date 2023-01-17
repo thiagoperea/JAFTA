@@ -1,5 +1,6 @@
 package com.thiagoperea.jafta.login.ui.signup
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -11,7 +12,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -164,12 +167,22 @@ fun SignupScreen(
                     .padding(start = 16.dp, end = 16.dp, top = 16.dp),
                 onClick = { TODO() },
                 content = {
-                    Text(
-                        modifier = Modifier.padding(vertical = 4.dp),
-                        text = "Sign Up with Google",
-                        style = TextStyles.title3,
-                        color = Color.Black
-                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Image(
+                            imageVector = ImageVector.vectorResource(id = R.drawable.ic_google),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .padding(end = 10.dp)
+                        )
+                        Text(
+                            modifier = Modifier.padding(vertical = 4.dp),
+                            text = stringResource(id = R.string.sign_up_with_google),
+                            style = TextStyles.title3,
+                            color = Color.Black
+                        )
+                    }
                 },
                 shape = RoundedCornerShape(16.dp),
                 elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp, 0.dp),
