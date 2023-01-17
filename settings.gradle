@@ -16,3 +16,4 @@ rootProject.name = "JAFTA"
 include ':app'
 include ':design_system'
 include ':login'
+include ':home'
