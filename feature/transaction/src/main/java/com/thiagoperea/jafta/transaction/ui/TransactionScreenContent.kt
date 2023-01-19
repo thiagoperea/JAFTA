@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.ArrowTopAppBar
@@ -33,7 +34,7 @@ fun TransactionScreenContent(
     onNavigateUp: () -> Unit
 ) {
     val scrollState = rememberScrollState()
-    val valueState = remember { mutableStateOf("R$ 0,00") }
+    val valueState = remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -57,11 +58,17 @@ fun TransactionScreenContent(
 
         BasicTextField(
             value = valueState.value,
-            onValueChange = { valueState.value = it },
+            onValueChange = {
+                if (it.length <= 9) {
+                    valueState.value = it
+                }
+            },
             textStyle = TextStyles.semiBold48.copy(color = Color.White),
             cursorBrush = SolidColor(Color.White),
             maxLines = 1,
             modifier = Modifier.padding(start = 24.dp),
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+            visualTransformation = MoneyMask()
         )
 
         Column(

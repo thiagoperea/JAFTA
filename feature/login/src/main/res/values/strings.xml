@@ -20,7 +20,7 @@
     <string name="terms_of_service_and_privacy_policy">Ao se inscrever, você concorda com os </string>
     <string name="terms_of_service_and_privacy_policy_span_text">Termos de Serviço e a Política de Privacidade</string>
     <string name="or">Ou</string>
-    <string name="already_have_an_account">Já tem uma conta? </string>
+    <string name="already_have_an_account">Já tem uma conta?</string>
     <string name="sign_up_with_google">Criar conta com Google</string>
 
     <!-- Login screen -->
