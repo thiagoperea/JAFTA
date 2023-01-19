@@ -17,7 +17,9 @@ import com.thiagoperea.jafta.design_system.theme.TextStyles
 @Composable
 fun ArrowTopAppBar(
     text: String,
-    onNavigateUp: () -> Unit
+    onNavigateUp: () -> Unit,
+    backgroundColor: Color = Color.White,
+    contentColor: Color = Color.Black
 ) {
     TopAppBar(
         title = {
@@ -28,8 +30,8 @@ fun ArrowTopAppBar(
                 style = TextStyles.title3
             )
         },
-        contentColor = Color.Black,
-        backgroundColor = Color.White,
+        backgroundColor = backgroundColor,
+        contentColor = contentColor,
         navigationIcon = {
             IconButton(
                 onClick = onNavigateUp

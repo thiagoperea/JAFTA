@@ -15,5 +15,6 @@ dependencyResolutionManagement {
 rootProject.name = "JAFTA"
 include ':app'
 include ':design_system'
-include ':login'
-include ':home'
+include ':feature:login'
+include ':feature:home'
+include ':feature:transaction'

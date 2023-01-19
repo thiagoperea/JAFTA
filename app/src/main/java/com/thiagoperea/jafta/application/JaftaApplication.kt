@@ -2,6 +2,7 @@ package com.thiagoperea.jafta.application
 
 import android.app.Application
 import com.thiagoperea.jafta.login.di.loginModule
+import com.thiagoperea.jafta.transaction.di.transactionModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
@@ -18,7 +19,8 @@ class JaftaApplication : Application() {
 
             // Load modules
             modules(
-                loginModule
+                loginModule,
+                transactionModule
             )
         }
     }
