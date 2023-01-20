@@ -10,6 +10,7 @@ val Dark75 = Color(0xFF161719)
 val Dark100 = Color(0xFF0D0E0F)
 
 val Light20 = Color(0xFF91919F)
+val Light60 = Color(0xFFF1F1FA)
 val Light80 = Color(0xFFFCFCFC)
 
 val Green100 = Color(0xFF00A86B)

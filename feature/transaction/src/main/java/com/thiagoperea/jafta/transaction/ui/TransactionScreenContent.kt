@@ -1,6 +1,7 @@
 package com.thiagoperea.jafta.transaction.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,7 +11,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.DropdownMenu
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,8 +25,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.PopupProperties
 import com.thiagoperea.jafta.design_system.ArrowTopAppBar
+import com.thiagoperea.jafta.design_system.theme.Dark100
 import com.thiagoperea.jafta.design_system.theme.JAFTATheme
+import com.thiagoperea.jafta.design_system.theme.Light60
 import com.thiagoperea.jafta.design_system.theme.Light80
 import com.thiagoperea.jafta.design_system.theme.TextStyles
 import com.thiagoperea.jafta.transaction.R
@@ -35,6 +42,9 @@ fun TransactionScreenContent(
 ) {
     val scrollState = rememberScrollState()
     val valueState = remember { mutableStateOf("") }
+
+    val categoryState = remember { mutableStateOf("") }
+    val dropdownExpandState = remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -82,6 +92,42 @@ fun TransactionScreenContent(
                 )
         ) {
 
+            Box(
+                modifier = Modifier
+                    .padding(top = 24.dp, start = 16.dp, end = 16.dp)
+                    .fillMaxWidth()
+            ) {
+
+                OutlinedTextField(
+                    value = categoryState.value,
+                    onValueChange = { categoryState.value = it },
+                    shape = RoundedCornerShape(16.dp),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedBorderColor = Light60,
+                        unfocusedBorderColor = Light60,
+                        textColor = Dark100
+                    ),
+                    label = {
+                        Text(
+                            text = "Category",
+                            style = TextStyles.title2
+                        )
+                    },
+                    placeholder = {
+                        Text(
+                            text = "Category"
+                        )
+                    }
+                )
+
+                DropdownMenu(
+                    expanded = dropdownExpandState.value,
+                    properties = PopupProperties(
+                        #focusable = false, // TODO:
+
+                    )
+                )
+            }
         }
     }
 }
