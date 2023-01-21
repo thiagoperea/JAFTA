@@ -3,4 +3,9 @@
     <string name="new_expense">Nova Despesa</string>
     <string name="new_income">Nova Receita</string>
     <string name="how_much">Qual valor?</string>
+    <string name="category">Categoria</string>
+    <string name="description">Descrição</string>
+    <string name="repeat">Repetir</string>
+    <string name="repeat_transaction">Repetir transação</string>
+    <string name="save">Salvar</string>
 </resources>

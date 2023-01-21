@@ -1,20 +1,13 @@
 package com.thiagoperea.jafta.transaction.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,15 +16,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.PopupProperties
 import com.thiagoperea.jafta.design_system.ArrowTopAppBar
-import com.thiagoperea.jafta.design_system.theme.Dark100
-import com.thiagoperea.jafta.design_system.theme.JAFTATheme
-import com.thiagoperea.jafta.design_system.theme.Light60
-import com.thiagoperea.jafta.design_system.theme.Light80
-import com.thiagoperea.jafta.design_system.theme.TextStyles
+import com.thiagoperea.jafta.design_system.CustomButton
+import com.thiagoperea.jafta.design_system.CustomButtonType
+import com.thiagoperea.jafta.design_system.input.CustomDropdown
+import com.thiagoperea.jafta.design_system.theme.*
 import com.thiagoperea.jafta.transaction.R
 import com.thiagoperea.jafta.transaction.ui.type.TransactionScreenType
 
@@ -43,8 +35,9 @@ fun TransactionScreenContent(
     val scrollState = rememberScrollState()
     val valueState = remember { mutableStateOf("") }
 
-    val categoryState = remember { mutableStateOf("") }
-    val dropdownExpandState = remember { mutableStateOf(false) }
+    val categoryState = remember { mutableStateOf(TextFieldValue()) }
+    val descriptionState = remember { mutableStateOf("") }
+    val repeatTransactionState = remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -92,42 +85,91 @@ fun TransactionScreenContent(
                 )
         ) {
 
-            Box(
+            CustomDropdown(
+                modifier = Modifier.padding(top = 24.dp, start = 16.dp, end = 16.dp),
+                label = stringResource(R.string.category),
+                value = categoryState.value,
+                onValueChanged = { categoryState.value = it },
+                dropdownDataset = listOf("Contas", "Restaurante", "Necessidades")
+                //TODO: receive from viewmodel
+            )
+
+            //TODO: create design system \/
+            OutlinedTextField(
                 modifier = Modifier
-                    .padding(top = 24.dp, start = 16.dp, end = 16.dp)
                     .fillMaxWidth()
+                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                value = descriptionState.value,
+                onValueChange = { descriptionState.value = it },
+                shape = RoundedCornerShape(16.dp),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Light60,
+                    unfocusedBorderColor = Light60,
+                    textColor = Dark100
+                ),
+                label = {
+                    Text(
+                        text = stringResource(R.string.description),
+                        style = TextStyles.title2
+                    )
+                }
+            )
+
+            //TODO: create design system \/
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, top = 16.dp, end = 16.dp)
             ) {
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(start = 16.dp, top = 8.dp, bottom = 8.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.repeat),
+                        style = TextStyles.body1,
+                        color = Dark25
+                    )
 
-                OutlinedTextField(
-                    value = categoryState.value,
-                    onValueChange = { categoryState.value = it },
-                    shape = RoundedCornerShape(16.dp),
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        focusedBorderColor = Light60,
-                        unfocusedBorderColor = Light60,
-                        textColor = Dark100
-                    ),
-                    label = {
-                        Text(
-                            text = "Category",
-                            style = TextStyles.title2
-                        )
+                    Spacer(Modifier.height(4.dp))
+
+                    Text(
+                        text = stringResource(R.string.repeat_transaction),
+                        style = TextStyles.medium13,
+                        color = Light20
+                    )
+                }
+
+                Switch(
+                    checked = repeatTransactionState.value,
+                    onCheckedChange = {
+                        repeatTransactionState.value = !repeatTransactionState.value
                     },
-                    placeholder = {
-                        Text(
-                            text = "Category"
-                        )
-                    }
-                )
-
-                DropdownMenu(
-                    expanded = dropdownExpandState.value,
-                    properties = PopupProperties(
-                        #focusable = false, // TODO:
-
+                    colors = SwitchDefaults.colors(
+                        uncheckedTrackColor = Violet20,
+                        uncheckedThumbColor = Light80,
+                        uncheckedTrackAlpha = 1f,
+                        checkedTrackColor = Violet100,
+                        checkedThumbColor = Light80,
+                        checkedTrackAlpha = 1f,
                     )
                 )
             }
+
+            // SPACER AND BUTTON
+            Spacer(Modifier.weight(1f))
+
+            CustomButton(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                type = CustomButtonType.PRIMARY,
+                text = stringResource(R.string.save),
+                onClick = {
+
+                }
+            )
         }
     }
 }
