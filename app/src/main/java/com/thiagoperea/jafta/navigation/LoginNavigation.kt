@@ -5,7 +5,10 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.thiagoperea.jafta.JaftaNavigation
+import com.thiagoperea.jafta.login.ui.login.ForgotPasswordScreen
 import com.thiagoperea.jafta.login.ui.login.LoginScreen
+import com.thiagoperea.jafta.login.ui.login.ResetPasswordScreen
+import com.thiagoperea.jafta.login.ui.login.ShippingConfirmationScreen
 import com.thiagoperea.jafta.login.ui.onboarding.OnboardingScreen
 import com.thiagoperea.jafta.login.ui.signup.SignupScreen
 
@@ -40,7 +43,25 @@ fun NavGraphBuilder.loginNavigation(navController: NavController) {
                     launchSingleTop = true
                     restoreState = true
                 }
-            }
+            },
+            goToForgotPassword = { navController.navigate(JaftaNavigation.forgotPassword) }
         )
+    }
+
+    composable(JaftaNavigation.forgotPassword) {
+        ForgotPasswordScreen(
+            onNavigationUp = { navController.navigateUp() },
+            sendEmail = { navController.navigate(JaftaNavigation.shippingConfirmation) }
+        )
+    }
+
+    composable(JaftaNavigation.shippingConfirmation) {
+        ShippingConfirmationScreen(
+            goToResetPassword = { navController.navigate(JaftaNavigation.resetPassword) }
+        )
+    }
+
+    composable(JaftaNavigation.resetPassword) {
+        ResetPasswordScreen {}
     }
 }

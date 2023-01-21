@@ -1,5 +1,6 @@
 package com.thiagoperea.jafta.login.ui.login
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -26,7 +27,8 @@ import com.thiagoperea.jafta.login.R
 @Composable
 fun LoginScreen(
     onNavigationUp: () -> Unit,
-    goToHome: () -> Unit
+    goToHome: () -> Unit,
+    goToForgotPassword: () -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -111,7 +113,8 @@ fun LoginScreen(
                 color = Violet100,
                 modifier = Modifier
                     .padding(top = 33.dp, bottom = 38.dp)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .clickable { goToForgotPassword() },
                 textAlign = TextAlign.Center
             )
 
@@ -137,6 +140,6 @@ fun LoginScreen(
 @Composable
 fun ItemPreview() {
     JAFTATheme {
-        LoginScreen(onNavigationUp = { }, goToHome = {})
+        LoginScreen(onNavigationUp = { }, goToHome = {}, goToForgotPassword = {})
     }
 }

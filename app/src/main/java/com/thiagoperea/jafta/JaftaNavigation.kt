@@ -12,4 +12,8 @@ object JaftaNavigation {
     const val homeProfile = "home/profile"
 
     const val transaction = "transaction"
+
+    const val forgotPassword = "forgotPassword"
+    const val shippingConfirmation = "shippingConfirmation"
+    const val resetPassword = "resetPassword"
 }

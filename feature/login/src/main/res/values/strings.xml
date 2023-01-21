@@ -28,4 +28,16 @@
     <string name="dont_have_an_account_yet">Ainda não tem uma conta?</string>
     <string name="forgot_password">Esqueceu a senha?</string>
 
+    <!-- Forgot password screen -->
+    <string name="title_forgot_password">Esqueceu a senha</string>
+    <string name="enter_your_email_and_well_send_you_a_link">Não se preocupe.\nDigite seu e-mail e enviaremos um link para redefinir sua senha.</string>
+    <string name="continue_button">Continue</string>
+    <string name="back_to_login">Voltar para Login</string> <!-- Não sei se esse seria um bom nome -->
+    <string name="check_your_email">"Verifique seu e-mail test@test.com e\nsiga as instruções para redefinir sua senha"</string>
+    <string name="your_email_is_on_the_way">"Seu e-mail está a caminho"</string>
+    <string name="reset_password">"Redefinir senha"</string>
+    <string name="new_password">"Nova senha"</string>
+    <string name="enter_new_password">"Insira uma nova senha"</string>
+    <string name="retype_new_password">"Repita sua nova senha"</string>
+
 </resources>

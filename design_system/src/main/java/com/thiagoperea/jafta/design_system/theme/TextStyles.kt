@@ -99,6 +99,13 @@ object TextStyles {
         //TODO: fontFamily =
     )
 
+    val semiBold24 = TextStyle(
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 24.sp,
+        lineHeight = 29.05.sp
+        //TODO: fontFamily =
+    )
+
     val semiBold40 = TextStyle(
         fontWeight = FontWeight.SemiBold,
         fontSize = 40.sp,
