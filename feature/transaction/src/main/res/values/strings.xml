@@ -8,4 +8,11 @@
     <string name="repeat">Repetir</string>
     <string name="repeat_transaction">Repetir transação</string>
     <string name="save">Salvar</string>
+    <string name="frequency">Frequencia</string>
+    <string name="dialy">Diariamente</string>
+    <string name="weekly">Semanalmente</string>
+    <string name="monthly">Mensalmente</string>
+    <string name="yearly">Anualmente</string>
+    <string name="end_date">Termina em</string>
+    <string name="next">Próximo</string>
 </resources>

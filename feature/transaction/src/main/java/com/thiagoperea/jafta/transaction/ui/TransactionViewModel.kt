@@ -1,13 +1,20 @@
 package com.thiagoperea.jafta.transaction.ui
 
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetState
+import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterialApi::class)
 class TransactionViewModel : ViewModel() {
 
     val screenState = mutableStateOf<TransactionState>(TransactionState.Loading)
+
+
+    val isRepeatingTransaction = mutableStateOf(false)
 
     fun loadScreen() {
         viewModelScope.launch {
@@ -15,7 +22,7 @@ class TransactionViewModel : ViewModel() {
 
             //TODO: get last transaction screen
 
-            screenState.value = TransactionState.NewIncome
+            screenState.value = TransactionState.NewEntry
         }
     }
 }
@@ -23,7 +30,5 @@ class TransactionViewModel : ViewModel() {
 sealed class TransactionState {
     object Loading : TransactionState()
 
-    object NewIncome : TransactionState()
-
-    object NewExpense : TransactionState()
+    object NewEntry : TransactionState()
 }

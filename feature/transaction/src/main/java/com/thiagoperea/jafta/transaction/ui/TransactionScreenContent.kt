@@ -1,13 +1,23 @@
 package com.thiagoperea.jafta.transaction.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Switch
+import androidx.compose.material.SwitchDefaults
+import androidx.compose.material.Text
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,21 +33,30 @@ import com.thiagoperea.jafta.design_system.ArrowTopAppBar
 import com.thiagoperea.jafta.design_system.CustomButton
 import com.thiagoperea.jafta.design_system.CustomButtonType
 import com.thiagoperea.jafta.design_system.input.CustomDropdown
-import com.thiagoperea.jafta.design_system.theme.*
+import com.thiagoperea.jafta.design_system.theme.Dark100
+import com.thiagoperea.jafta.design_system.theme.Dark25
+import com.thiagoperea.jafta.design_system.theme.JAFTATheme
+import com.thiagoperea.jafta.design_system.theme.Light20
+import com.thiagoperea.jafta.design_system.theme.Light60
+import com.thiagoperea.jafta.design_system.theme.Light80
+import com.thiagoperea.jafta.design_system.theme.TextStyles
+import com.thiagoperea.jafta.design_system.theme.Violet100
+import com.thiagoperea.jafta.design_system.theme.Violet20
 import com.thiagoperea.jafta.transaction.R
 import com.thiagoperea.jafta.transaction.ui.type.TransactionScreenType
 
 @Composable
 fun TransactionScreenContent(
     type: TransactionScreenType,
-    onNavigateUp: () -> Unit
+    onNavigateUp: () -> Unit,
+    isRepeatingTransaction: Boolean,
+    onRepeatingTransactionChanged: (Boolean) -> Unit
 ) {
     val scrollState = rememberScrollState()
     val valueState = remember { mutableStateOf("") }
 
     val categoryState = remember { mutableStateOf(TextFieldValue()) }
     val descriptionState = remember { mutableStateOf("") }
-    val repeatTransactionState = remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -142,10 +161,8 @@ fun TransactionScreenContent(
                 }
 
                 Switch(
-                    checked = repeatTransactionState.value,
-                    onCheckedChange = {
-                        repeatTransactionState.value = !repeatTransactionState.value
-                    },
+                    checked = isRepeatingTransaction,
+                    onCheckedChange = { onRepeatingTransactionChanged(it) },
                     colors = SwitchDefaults.colors(
                         uncheckedTrackColor = Violet20,
                         uncheckedThumbColor = Light80,
@@ -180,7 +197,9 @@ fun PreviewTransactionScreenContent() {
     JAFTATheme {
         TransactionScreenContent(
             type = TransactionScreenType.EXPENSE,
-            onNavigateUp = {}
+            onNavigateUp = {},
+            isRepeatingTransaction = false,
+            onRepeatingTransactionChanged = {}
         )
     }
 }

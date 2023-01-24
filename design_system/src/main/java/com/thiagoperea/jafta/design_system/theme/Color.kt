@@ -22,6 +22,7 @@ val Yellow100 = Color(0xFFFCAC12)
 val Yellow20 = Color(0xFFFCEED4)
 
 val Violet20 = Color(0xFFEEE5FF)
+val Violet40 = Color(0xFFD3BDFF)
 val Violet100 = Color(0xFF7F3DFF)
 
 /* DELETE */
