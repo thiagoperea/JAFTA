@@ -16,8 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.ArrowTopAppBar
-import com.thiagoperea.jafta.design_system.CustomButton
-import com.thiagoperea.jafta.design_system.CustomButtonType
+import com.thiagoperea.jafta.design_system.button.CustomButton
+import com.thiagoperea.jafta.design_system.button.CustomButtonType
 import com.thiagoperea.jafta.design_system.theme.JAFTATheme
 import com.thiagoperea.jafta.design_system.theme.TextStyles
 import com.thiagoperea.jafta.design_system.theme.Violet100

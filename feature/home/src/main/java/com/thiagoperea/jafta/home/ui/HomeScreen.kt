@@ -16,8 +16,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -27,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.thiagoperea.jafta.design_system.button.CustomPill
 import com.thiagoperea.jafta.design_system.theme.Dark100
 import com.thiagoperea.jafta.design_system.theme.Dark25
 import com.thiagoperea.jafta.design_system.theme.JAFTATheme
@@ -34,8 +33,6 @@ import com.thiagoperea.jafta.design_system.theme.Light20
 import com.thiagoperea.jafta.design_system.theme.Light80
 import com.thiagoperea.jafta.design_system.theme.Red100
 import com.thiagoperea.jafta.design_system.theme.TextStyles
-import com.thiagoperea.jafta.design_system.theme.Violet100
-import com.thiagoperea.jafta.design_system.theme.Violet20
 import com.thiagoperea.jafta.home.R
 import com.thiagoperea.jafta.home.ui.model.TransactionData
 import com.thiagoperea.jafta.home.ui.type.TransactionType
@@ -96,21 +93,9 @@ fun LazyListScope.HomeTransactions() {
                 modifier = Modifier.weight(1f)
             )
 
-            // TODO: should go to design system?
-            Button(
-                onClick = {},
-                shape = RoundedCornerShape(32.dp),
-                elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp, 0.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Violet20,
-                    contentColor = Violet100
-                ),
-                content = {
-                    Text(
-                        text = stringResource(R.string.see_all),
-                        style = TextStyles.body3
-                    )
-                },
+            CustomPill(
+                text = stringResource(R.string.see_all),
+                onClick = {}
             )
         }
     }

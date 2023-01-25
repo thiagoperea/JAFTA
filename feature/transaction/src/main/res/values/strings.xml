@@ -15,4 +15,7 @@
     <string name="yearly">Anualmente</string>
     <string name="end_date">Termina em</string>
     <string name="next">Próximo</string>
+    <string name="edit">Editar</string>
+    <string name="saving_transaction">Salvando transação…</string>
+    <string name="transaction_saved">Transação salva com sucesso!</string>
 </resources>

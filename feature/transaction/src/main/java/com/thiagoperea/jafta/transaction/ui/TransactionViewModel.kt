@@ -1,28 +1,38 @@
 package com.thiagoperea.jafta.transaction.ui
 
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetState
-import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.thiagoperea.jafta.design_system.dialog.DialogState
+import com.thiagoperea.jafta.transaction.R
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class)
 class TransactionViewModel : ViewModel() {
 
     val screenState = mutableStateOf<TransactionState>(TransactionState.Loading)
+    val dialogState = mutableStateOf<DialogState>(DialogState.Dismissed)
 
-
-    val isRepeatingTransaction = mutableStateOf(false)
+    var isRepeatingTransaction = mutableStateOf(false)
+    var frequency: String? = null
+    var endDate: String? = null
 
     fun loadScreen() {
         viewModelScope.launch {
             screenState.value = TransactionState.Loading
 
-            //TODO: get last transaction screen
+            /* TODO: load data if it is editing */
 
             screenState.value = TransactionState.NewEntry
+        }
+    }
+
+    fun saveTransaction() {
+        viewModelScope.launch {
+            dialogState.value = DialogState.Loading(R.string.saving_transaction)
+
+            /* TODO: save transaction */
+
+            dialogState.value = DialogState.Success(R.string.transaction_saved)
         }
     }
 }

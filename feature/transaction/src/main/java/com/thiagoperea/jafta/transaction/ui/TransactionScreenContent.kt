@@ -6,21 +6,17 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Switch
-import androidx.compose.material.SwitchDefaults
 import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
@@ -30,18 +26,17 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.ArrowTopAppBar
-import com.thiagoperea.jafta.design_system.CustomButton
-import com.thiagoperea.jafta.design_system.CustomButtonType
+import com.thiagoperea.jafta.design_system.button.CustomButton
+import com.thiagoperea.jafta.design_system.button.CustomButtonType
+import com.thiagoperea.jafta.design_system.button.CustomPill
 import com.thiagoperea.jafta.design_system.input.CustomDropdown
-import com.thiagoperea.jafta.design_system.theme.Dark100
+import com.thiagoperea.jafta.design_system.input.CustomTextField
 import com.thiagoperea.jafta.design_system.theme.Dark25
 import com.thiagoperea.jafta.design_system.theme.JAFTATheme
 import com.thiagoperea.jafta.design_system.theme.Light20
-import com.thiagoperea.jafta.design_system.theme.Light60
 import com.thiagoperea.jafta.design_system.theme.Light80
 import com.thiagoperea.jafta.design_system.theme.TextStyles
-import com.thiagoperea.jafta.design_system.theme.Violet100
-import com.thiagoperea.jafta.design_system.theme.Violet20
+import com.thiagoperea.jafta.design_system.toggle.CustomSwitch
 import com.thiagoperea.jafta.transaction.R
 import com.thiagoperea.jafta.transaction.ui.type.TransactionScreenType
 
@@ -50,7 +45,11 @@ fun TransactionScreenContent(
     type: TransactionScreenType,
     onNavigateUp: () -> Unit,
     isRepeatingTransaction: Boolean,
-    onRepeatingTransactionChanged: (Boolean) -> Unit
+    onRepeatingTransactionChanged: (Boolean) -> Unit,
+    frequency: String?,
+    endDate: String?,
+    onEditFrequencyClick: () -> Unit,
+    onSaveClick: () -> Unit,
 ) {
     val scrollState = rememberScrollState()
     val valueState = remember { mutableStateOf("") }
@@ -105,7 +104,7 @@ fun TransactionScreenContent(
         ) {
 
             CustomDropdown(
-                modifier = Modifier.padding(top = 24.dp, start = 16.dp, end = 16.dp),
+                modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
                 label = stringResource(R.string.category),
                 value = categoryState.value,
                 onValueChanged = { categoryState.value = it },
@@ -113,65 +112,64 @@ fun TransactionScreenContent(
                 //TODO: receive from viewmodel
             )
 
-            //TODO: create design system \/
-            OutlinedTextField(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+            CustomTextField(
+                modifier = Modifier.padding(start = 16.dp, top = 8.dp, end = 16.dp),
+                label = stringResource(R.string.description),
                 value = descriptionState.value,
-                onValueChange = { descriptionState.value = it },
-                shape = RoundedCornerShape(16.dp),
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Light60,
-                    unfocusedBorderColor = Light60,
-                    textColor = Dark100
-                ),
-                label = {
-                    Text(
-                        text = stringResource(R.string.description),
-                        style = TextStyles.title2
-                    )
-                }
+                onValueChanged = { descriptionState.value = it }
             )
 
-            //TODO: create design system \/
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp)
-            ) {
-                Column(
+            CustomSwitch(
+                modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                title = stringResource(R.string.repeat),
+                subtitle = stringResource(R.string.repeat_transaction),
+                isChecked = isRepeatingTransaction,
+                onCheckedChanged = onRepeatingTransactionChanged
+            )
+
+            if (frequency != null && endDate != null) {
+                Row(
                     modifier = Modifier
-                        .weight(1f)
-                        .padding(start = 16.dp, top = 8.dp, bottom = 8.dp)
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = stringResource(R.string.repeat),
-                        style = TextStyles.body1,
-                        color = Dark25
-                    )
 
-                    Spacer(Modifier.height(4.dp))
+                    Column(
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text(
+                            text = stringResource(R.string.frequency),
+                            style = TextStyles.body3,
+                            color = Dark25
+                        )
+                        Text(
+                            text = frequency,
+                            style = TextStyles.medium13,
+                            color = Light20
+                        )
+                    }
 
-                    Text(
-                        text = stringResource(R.string.repeat_transaction),
-                        style = TextStyles.medium13,
-                        color = Light20
+                    Column(
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text(
+                            text = stringResource(R.string.end_date),
+                            style = TextStyles.body3,
+                            color = Dark25
+                        )
+                        Text(
+                            text = endDate,
+                            style = TextStyles.medium13,
+                            color = Light20
+                        )
+                    }
+
+                    CustomPill(
+                        text = stringResource(R.string.edit),
+                        onClick = onEditFrequencyClick
                     )
                 }
-
-                Switch(
-                    checked = isRepeatingTransaction,
-                    onCheckedChange = { onRepeatingTransactionChanged(it) },
-                    colors = SwitchDefaults.colors(
-                        uncheckedTrackColor = Violet20,
-                        uncheckedThumbColor = Light80,
-                        uncheckedTrackAlpha = 1f,
-                        checkedTrackColor = Violet100,
-                        checkedThumbColor = Light80,
-                        checkedTrackAlpha = 1f,
-                    )
-                )
             }
 
             // SPACER AND BUTTON
@@ -183,9 +181,7 @@ fun TransactionScreenContent(
                     .padding(16.dp),
                 type = CustomButtonType.PRIMARY,
                 text = stringResource(R.string.save),
-                onClick = {
-
-                }
+                onClick = onSaveClick
             )
         }
     }
@@ -199,7 +195,11 @@ fun PreviewTransactionScreenContent() {
             type = TransactionScreenType.EXPENSE,
             onNavigateUp = {},
             isRepeatingTransaction = false,
-            onRepeatingTransactionChanged = {}
+            onRepeatingTransactionChanged = {},
+            frequency = null,
+            endDate = null,
+            onEditFrequencyClick = {},
+            onSaveClick = {}
         )
     }
 }

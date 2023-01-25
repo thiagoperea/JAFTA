@@ -1,4 +1,4 @@
-package com.thiagoperea.jafta.design_system
+package com.thiagoperea.jafta.design_system.button
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

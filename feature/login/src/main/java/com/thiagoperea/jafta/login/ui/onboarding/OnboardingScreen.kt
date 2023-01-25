@@ -14,8 +14,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import com.thiagoperea.jafta.design_system.CustomButton
-import com.thiagoperea.jafta.design_system.CustomButtonType
+import com.thiagoperea.jafta.design_system.button.CustomButton
+import com.thiagoperea.jafta.design_system.button.CustomButtonType
 import com.thiagoperea.jafta.design_system.theme.Violet100
 import com.thiagoperea.jafta.design_system.theme.Violet20
 import com.thiagoperea.jafta.login.R

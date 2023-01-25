@@ -11,6 +11,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.jafta.design_system.LoadingScreen
+import com.thiagoperea.jafta.design_system.dialog.DialogState
 import com.thiagoperea.jafta.transaction.ui.type.TransactionScreenType
 import com.thiagoperea.jafta.transaction.ui.view.TransactionRepeatSheet
 import kotlinx.coroutines.launch
@@ -45,8 +46,17 @@ fun TransactionScreen(
         viewModel.loadScreen()
     }
 
+    /* TODO: EXT FUN TO HANDLE LOADING? */
     if (screenState == TransactionState.Loading) {
         LoadingScreen()
+    }
+
+    /* TODO: EXT FUN TO HANDLE DIALOGS */
+    when (viewModel.dialogState.value) {
+        is DialogState.Dismissed -> Unit
+        is DialogState.Failure -> TODO()
+        is DialogState.Loading -> TODO()
+        is DialogState.Success -> TODO()
     }
 
     ModalBottomSheetLayout(
@@ -77,6 +87,10 @@ fun TransactionScreen(
                     coroutineScope.launch { bottomSheetState.show() }
                 }
             },
+            frequency = viewModel.frequency,
+            endDate = viewModel.endDate,
+            onEditFrequencyClick = { /* TODO: reopen transaction dialog */ },
+            onSaveClick = { viewModel.saveTransaction() }
         )
     }
 }
