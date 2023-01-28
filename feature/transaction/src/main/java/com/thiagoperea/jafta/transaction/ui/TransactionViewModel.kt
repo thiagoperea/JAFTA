@@ -25,6 +25,7 @@ class TransactionViewModel : ViewModel() {
 
             screenState.value = TransactionState.NewEntry
 
+            /* TODO: REMOVE */
             delay(2000L)
             dialogState.value = DialogState.Loading(R.string.saving_transaction)
 
@@ -36,6 +37,7 @@ class TransactionViewModel : ViewModel() {
 
             delay(3000L)
             dialogState.value = DialogState.Dismissed
+            /* TODO: REMOVE */
         }
     }
 
