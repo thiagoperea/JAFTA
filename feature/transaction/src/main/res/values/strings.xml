@@ -18,4 +18,5 @@
     <string name="edit">Editar</string>
     <string name="saving_transaction">Salvando transação…</string>
     <string name="transaction_saved">Transação salva com sucesso!</string>
+    <string name="saving_transaction_error">Erro ao salvar transação :(</string>
 </resources>
