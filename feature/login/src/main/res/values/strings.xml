@@ -28,4 +28,15 @@
     <string name="dont_have_an_account_yet">Ainda não tem uma conta?</string>
     <string name="forgot_password">Esqueceu a senha?</string>
 
+    <!-- PIN screen -->
+
+    <string name="lets_setup_your_pin">Vamos configurar seu PIN</string>
+    <string name="ok_retype_your_pin_again">OK. Redigite seu PIN novamente.</string>
+
+    <!-- Setup Account screen -->
+
+    <string name="lets_setup_your_account">Vamos configurar sua conta!</string>
+    <string name="account_can_be_your_bank_credit_card_or_your_wallet">A conta pode ser seu banco, cartão de crédito ou\nsua carteira.</string>
+    <string name="lets_go">Vamos lá</string>
+
 </resources>
